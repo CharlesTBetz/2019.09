@@ -4,9 +4,10 @@ provider "google" {
   zone    = "us-central1-c"
 }
 
-resource "google_compute_instance" "vm_instance" {
-  name         = "terraform-instance"
+resource "google_compute_instance" "default" {
+  name         = "betz4871-testvm1"
   machine_type = "f1-micro"
+  zone         = "us-central1-c"
 
   boot_disk {
     initialize_params {
@@ -15,14 +16,14 @@ resource "google_compute_instance" "vm_instance" {
   }
 
   network_interface {
-    # A default network is created for all GCP projects
-    network       = "default"
+    network = "default"
+
     access_config {
+      // Ephemeral IP
     }
   }
-}
 
-resource "google_compute_network" "vpc_network" {
-  name                    = "terraform-network"
-  auto_create_subnetworks = "true"
+
+  metadata_startup_script = "echo hi > /test.txt"
+  
 }
