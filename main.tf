@@ -1,3 +1,9 @@
+## If you are adapting this for your project, you will need to change the following values:
+# - project ("proven-sum-252123" in this example)
+# - virtual machine name ("betz4871-testvm1" in this example; change first part to your email ID)
+# - connection user name ("betz4871" in this example; change to your email ID)
+# Terraform supports an external variable file and some of this could be extracted there
+
 provider "google" {
   project = "proven-sum-252123"
   region  = "us-central1"
